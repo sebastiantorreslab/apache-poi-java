@@ -1,5 +1,7 @@
 package com.apache.poi.apachePOIExcel;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -27,6 +29,24 @@ public class ApachePoiExcelApplication {
         Sheet hoja1 = libro.createSheet("Personas");
         Sheet hoja2 = libro.createSheet("Contactos");
         Sheet hoja3 = libro.createSheet("Direcciones");
+
+        // Crear filas
+
+        /*
+
+        Las filas en excel se manejan como un array pues as&iacute; funciona en apache POI, se cuentan desde cero en adelante.
+        al igual que el index en estructuras de datos.
+        *
+        * */
+
+        Row fila = hoja1.createRow(1);
+
+        // crear columnas
+
+        Cell cell = fila.createCell(1);
+
+        cell.setCellValue("Hola mundo");
+
 
         try {
             OutputStream output = new FileOutputStream("ArchivoExcel.xlsx");
