@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class coloresExcel {
+public class ColoresExcel {
 
     public static void main(String[] args) {
 

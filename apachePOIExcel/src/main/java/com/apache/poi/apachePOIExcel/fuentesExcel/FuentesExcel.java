@@ -1,4 +1,4 @@
-package com.apache.poi.apachePOIExcel.coloresExcel;
+package com.apache.poi.apachePOIExcel.fuentesExcel;
 
 import org.apache.poi.ss.formula.functions.Index;
 import org.apache.poi.ss.usermodel.FillPatternType;

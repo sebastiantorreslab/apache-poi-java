@@ -9,7 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class ejercicio1 {
+public class Ejercicio1 {
     public static void main(String[] args) {
 
         Workbook libroEjercicios = new XSSFWorkbook();
