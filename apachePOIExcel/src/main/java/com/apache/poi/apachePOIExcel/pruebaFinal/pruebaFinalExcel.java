@@ -1,6 +1,7 @@
 package com.apache.poi.apachePOIExcel.pruebaFinal;
 
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.FontUnderline;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.*;
@@ -21,15 +22,43 @@ public class pruebaFinalExcel {
 
         // patrón builder
 
-
-
         XSSFWorkbook libro = new XSSFWorkbook();
 
         XSSFSheet hoja = libro.createSheet("Clientes");
 
-        XSSFCellStyle estiloTitulo = new GeneradorEstilos.Builder().setColorDefecto(IndexedColors.DARK_BLUE.getIndex())
+        XSSFFont fuenteTitulo = new GeneradorFuentes.Builder().setNombreFuente("Calibri")
+                .setTamanioFuente((short) 18)
+                .setConNegrita(true)
+                .setColorDefecto(IndexedColors.WHITE1.getIndex())
+                .setTipoUnderline(FontUnderline.SINGLE)
+                .build(libro);
+
+        XSSFFont fuenteContenido = new GeneradorFuentes.Builder().setNombreFuente("Arial")
+                .setTamanioFuente((short) 14)
+                .setConItalica(true)
+                .setColorDefecto(IndexedColors.WHITE1.getIndex())
+                .build(libro);
+
+        XSSFCellStyle estiloTitulo = new GeneradorEstilos.Builder()
+                .setColorPersonalizado("C128CE")
                 .setTipoPatron(FillPatternType.SOLID_FOREGROUND)
                 .setAlineacionHorizontal(HorizontalAlignment.CENTER)
+                .setFuente(fuenteTitulo)
+                .build(libro);
+
+        XSSFCellStyle estiloContenido = new GeneradorEstilos.Builder()
+                .setColorPersonalizado("F6CCFA")
+                .setTipoPatron(FillPatternType.SOLID_FOREGROUND)
+                .setAlineacionHorizontal(HorizontalAlignment.CENTER)
+                .setFuente(fuenteContenido)
+                .build(libro);
+
+        XSSFCellStyle estilosFecha = new GeneradorEstilos.Builder()
+                .setFormato("dd/MM/yyyy")
+                .setColorPersonalizado("F6CCFA")
+                .setTipoPatron(FillPatternType.SOLID_FOREGROUND)
+                .setAlineacionHorizontal(HorizontalAlignment.CENTER)
+                .setFuente(fuenteContenido)
                 .build(libro);
 
 
@@ -48,26 +77,28 @@ public class pruebaFinalExcel {
 
             }
 
-                Cliente cliente = listado.get(i);
-                List<Object> atributos = cliente.obtenerAtributos();
+            Cliente cliente = listado.get(i);
+            List<Object> atributos = cliente.obtenerAtributos();
 
-                fila = hoja.createRow(i+1);
-                for (int a = 0; a < atributos.size(); a++){
+            fila = hoja.createRow(i + 1);
+            for (int a = 0; a < atributos.size(); a++) {
 
-                    celda = fila.createCell(a);
+                celda = fila.createCell(a);
 
-                    if(atributos.get(a) instanceof Long){
-                        celda.setCellValue((Long) atributos.get(a));
-                    }
-                    if(atributos.get(a) instanceof String){
-                        celda.setCellValue((String) atributos.get(a));
-                    }
-                    if(atributos.get(a) instanceof LocalDate){
-                        celda.setCellValue((LocalDate) atributos.get(a));
-                    }
+                if (atributos.get(a) instanceof Long) {
+                    celda.setCellValue((Long) atributos.get(a));
+                    celda.setCellStyle(estiloContenido);
+                }
+                if (atributos.get(a) instanceof String) {
+                    celda.setCellValue((String) atributos.get(a));
+                    celda.setCellStyle(estiloContenido);
+                }
+                if (atributos.get(a) instanceof LocalDate) {
+                    celda.setCellValue((LocalDate) atributos.get(a));
+                    celda.setCellStyle(estilosFecha);
+                }
 
-                    hoja.autoSizeColumn(a);
-
+                hoja.autoSizeColumn(a);
 
 
             }
