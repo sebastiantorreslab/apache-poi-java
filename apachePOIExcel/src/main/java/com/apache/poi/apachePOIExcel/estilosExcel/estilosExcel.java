@@ -30,7 +30,7 @@ public class estilosExcel {
 
         XSSFCellStyle estiloCelda = libro.createCellStyle();
 
-        estiloCelda.setFillBackgroundColor(IndexedColors.LIGHT_ORANGE.getIndex());
+        estiloCelda.setFillForegroundColor(IndexedColors.LIGHT_ORANGE.getIndex());
         estiloCelda.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         estiloCelda.setBorderRight(BorderStyle.DOTTED);
         estiloCelda.setBorderTop(BorderStyle.DOTTED);
