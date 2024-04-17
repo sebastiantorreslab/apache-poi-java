@@ -1,9 +1,9 @@
 package com.apache.poi.apachePOIExcel.pruebaFinal;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.xssf.usermodel.*;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -27,6 +27,11 @@ public class pruebaFinalExcel {
 
         XSSFSheet hoja = libro.createSheet("Clientes");
 
+        XSSFCellStyle estiloTitulo = new GeneradorEstilos.Builder().setColorDefecto(IndexedColors.DARK_BLUE.getIndex())
+                .setTipoPatron(FillPatternType.SOLID_FOREGROUND)
+                .setAlineacionHorizontal(HorizontalAlignment.CENTER)
+                .build(libro);
+
 
         XSSFRow fila = null;
         XSSFCell celda = null;
@@ -38,6 +43,7 @@ public class pruebaFinalExcel {
                 for (int j = 0; j < campos.length; j++) {
                     celda = fila.createCell(j);
                     celda.setCellValue(campos[j].getName());
+                    celda.setCellStyle(estiloTitulo);
                 }
 
             }

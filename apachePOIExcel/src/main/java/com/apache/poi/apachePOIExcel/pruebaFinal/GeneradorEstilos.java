@@ -20,9 +20,6 @@ public class GeneradorEstilos {
         private String formato;
         private HorizontalAlignment alineacionHorizontal;
         private VerticalAlignment alineacionVertical;
-        private BorderStyle borderStyle;
-
-
 
         public Builder setAlineacionHorizontal(HorizontalAlignment alineacionHorizontal) {
             this.alineacionHorizontal = alineacionHorizontal;
@@ -34,10 +31,7 @@ public class GeneradorEstilos {
             return this;
         }
 
-        public Builder setBorderStyle(BorderStyle borderStyle) {
-            this.borderStyle = borderStyle;
-            return this;
-        }
+
 
         public Builder setColorDefecto(short colorDefecto) {
             this.colorDefecto = colorDefecto;
@@ -67,7 +61,6 @@ public class GeneradorEstilos {
             return this;
         }
 
-
         public Builder setFormato(String formato){
             this.formato = formato;
             return this;
@@ -93,7 +86,7 @@ public class GeneradorEstilos {
                 estilosCelda.setVerticalAlignment(alineacionVertical);
             }
 
-            return null;
+            return estilosCelda;
         }
 
 
